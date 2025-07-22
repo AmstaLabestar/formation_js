@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+</head>
+<body>
+    <input aria-label="nom" id="nom">
+    <button id="valider">Valider</button>
+    <p id="resultat"></p>
+
+    <script>
+      document.getElementById("valider").onclick = () => {
+        const nom = document.getElementById("nom").value;
+        document.getElementById("resultat").textContent = "Bonjour " + nom;
+        
+      };
+
+
+        const student = ["Alice","Tom","Sam","Karine","Sarah"]
+        console.log(student.slice(1,3))
+        console.log(student)
+
+
+    </script>
+
+</body>
+</html>

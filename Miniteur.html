@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miniteur</title>
+</head>
+<body>
+    <script>
+        // setTimeout(()=>{
+        //     console.log("hi");
+        // },1000);
+
+        const miniteur = setInterval(()=>{
+            console.log(' salut !');
+        },1000);
+        setTimeout(()=>{
+            clearInterval(miniteur);
+        },10000);
+    </script>
+</body>
+</html>

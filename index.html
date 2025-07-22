@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>frankenSplice Visuel</title>
+  <style>
+    body { font-family: Arial; max-width: 600px; margin: auto; padding: 2rem; }
+    input, button { margin: 0.5rem 0; width: 100%; padding: 0.5rem; font-size: 1rem; }
+    pre { background: #f4f4f4; padding: 1rem; border-radius: 6px; }
+  </style>
+</head>
+<body>
+
+  <h2>🔁 Fusion de tableaux avec frankenSplice()</h2>
+
+  <label>Tableau 1 (ex: 1,2,3)</label>
+  <input type="text" id="arr1" placeholder="1,2,3">
+
+  <label>Tableau 2 (ex: a,b,c)</label>
+  <input type="text" id="arr2" placeholder="a,b,c">
+
+  <label>Index d'insertion (ex: 1)</label>
+  <input type="number" id="index" placeholder="1">
+
+  <button onclick="fusionner()">Fusionner</button>
+
+  <h3>🧪 Résultat :</h3>
+  <pre id="resultat">Clique sur "Fusionner"</pre>
+
+  <script>
+    function frankenSplice(arr1, arr2, index) {
+      const copie = arr2.slice();
+      copie.splice(index, 0, ...arr1);
+      return copie;
+    }
+
+    function fusionner() {
+      const arr1 = document.getElementById("arr1").value.split(",");
+      const arr2 = document.getElementById("arr2").value.split(",");
+      const index = parseInt(document.getElementById("index").value);
+
+      const resultat = frankenSplice(arr1, arr2, index);
+      document.getElementById("resultat").textContent = JSON.stringify(resultat);
+    }
+  </script>
+
+</body>
+</html>

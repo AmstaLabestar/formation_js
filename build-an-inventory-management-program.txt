@@ -1,0 +1,56 @@
+** start of script.js **
+
+// 1. Déclaration d’un tableau vide nommé inventory
+const inventory = [];
+
+// 2. Fonction findProductIndex
+function findProductIndex(productName) {
+  const lowerName = productName.toLowerCase();
+
+  return inventory.findIndex(
+    (product) => product.name.toLowerCase() === lowerName
+  );
+}
+
+// 3. Fonction addProduct
+function addProduct(product) {
+  const lowerName = product.name.toLowerCase();
+  const index = findProductIndex(lowerName);
+
+  if (index !== -1) {
+    inventory[index].quantity += product.quantity;
+    console.log(`${lowerName} quantity updated`);
+  } else {
+    inventory.push({ name: lowerName, quantity: product.quantity });
+    console.log(`${lowerName} added to inventory`);
+  }
+}
+
+// 4. Fonction removeProduct
+function removeProduct(productName, quantity) {
+  const lowerName = productName.toLowerCase();
+  const index = findProductIndex(lowerName);
+
+  if (index === -1) {
+    console.log(`${lowerName} not found`);
+    return;
+  }
+
+  const product = inventory[index];
+
+  if (product.quantity < quantity) {
+    console.log(`Not enough ${lowerName} available, remaining pieces: ${product.quantity}`);
+  } else {
+    product.quantity -= quantity;
+
+    if (product.quantity === 0) {
+      inventory.splice(index, 1);
+    }
+
+    console.log(`Remaining ${lowerName} pieces: ${product.quantity}`);
+  }
+}
+
+
+** end of script.js **
+

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Rectangle App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+        .result {
+            margin-top: 10px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Créer un Rectangle</h1>
+    <form id="rectangleForm">
+        <label>
+            Largeur :
+            <input type="text" id="widthInput">
+        </label><br><br>
+        <label>
+            Hauteur :
+            <input type="text" id="heightInput">
+        </label><br><br>
+        <button type="submit">Créer</button>
+    </form>
+
+    <div id="message"></div>
+
+    <script>
+        class Rectangle {
+            constructor(width, height) {
+                if (typeof width !== 'number' || typeof height !== 'number' || isNaN(width) || isNaN(height)) {
+                    throw new TypeError("Les dimensions doivent être des nombres valides");
+                }
+
+                if (width <= 0 || height <= 0) {
+                    throw new RangeError("Les dimensions doivent être strictement positives");
+                }
+
+                this.width = width;
+                this.height = height;
+            }
+
+            surface() {
+                return this.width * this.height;
+            }
+        }
+
+        document.getElementById('rectangleForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Empêche le rechargement
+
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = "";
+            messageDiv.className = "";
+
+            const widthInput = document.getElementById('widthInput').value;
+            const heightInput = document.getElementById('heightInput').value;
+
+            try {
+                const width = parseFloat(widthInput);
+                const height = parseFloat(heightInput);
+
+                if (isNaN(width) || isNaN(height)) {
+                    throw new Error("Entrées non numériques", { cause: { widthInput, heightInput } });
+                }
+
+                const rect = new Rectangle(width, height);
+                messageDiv.textContent = `✅ Rectangle créé : surface = ${rect.surface()}`;
+                messageDiv.className = "result";
+
+            } catch (e) {
+                messageDiv.className = "error";
+                messageDiv.textContent = `❌ Erreur : ${e.message}`;
+
+                if (e.cause) {
+                    console.warn("Cause de l'erreur :", e.cause);
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

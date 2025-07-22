@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HOC</title>
+
+    <style>
+
+      body {
+  overflow-x: hidden;
+}
+
+.rect {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: 250px;
+  border-radius: 5px;
+  background-color: #1b1b32;
+  color: #f5f6f7;
+  font-size: 2rem;
+  position: absolute;
+}
+    </style>
+</head>
+<body>
+  <div id="rect" class="rect">
+    <img src="/s.png" alt="img">
+    <img src="/s.png" alt="img">
+    <img src="/s.png" alt="img">
+
+  </div>
+    <script>
+
+
+// reference the rectangle
+const rect = document.getElementById("rect");
+
+// start with a position of 0
+let position = 0;
+
+function update() {
+  // Move the rectangle 2px to the right
+  rect.style.left = position + "px";
+  position += 2;
+  console.log(position)
+
+  // Reset the position when the rectangle reaches
+  // the right side of the screen
+  if (position > window.innerWidth) {
+    // Move the rectangle just outside the left side of the screen
+    position = -rect.offsetWidth;
+  }
+   console.log(position)
+}
+
+function animate() {
+  // Update the position
+  update();
+
+  //request the next frame
+  requestAnimationFrame(animate);
+}
+
+// Start the animation
+requestAnimationFrame(animate);
+
+// const inventory = [
+ 
+// ];
+
+
+
+// function findProduitIndex(products, nomRechercher) {
+//     const nomRechercherLower = nomRechercher.toLowerCase();
+//   // Utilisation de findIndex pour trouver l'index du produit
+//     const index = products.findIndex(
+//         (product) => product.nom.toLowerCase() === nomRechercherLower
+//     );
+//     // Si l'index est -1, le produit n'a pas été trouvé
+
+//     if (index === -1) {
+//     console.log("Produit non trouvé");
+// }
+  
+
+//   return index;
+// }
+// console.log(findProduitIndex(inventory, "stylo")); // Affiche l'index du produit "stylo"
+
+//       function addProduct(product){
+//         let index = findProduitIndex(inventory, product.nom) 
+//         if (index !== -1) {
+//             inventory[index].quantite += product.quantite;
+
+//            console.log(`${product.nom} quantity updated`);
+
+//         } else {
+//             inventory.push(product);
+//             console.log(`${product.nom} added to inventory`);
+
+//         }  
+    
+
+//     }
+
+
+// addProduct({ nom: "stylo", quantite: 1 });     // stylo quantity updated
+// addProduct({ nom: "crayon", quantite: 3 });    // crayon added to inventory
+// addProduct({ nom: "CAHIER", quantite: 2 });    // cahier quantity updated (insensible à la casse)
+// console.log(inventory);
+
+// function removeProduct(nom, quantite) {
+//   const index = findProduitIndex(inventory, nom);
+
+//   if (index === -1) {
+//     console.log(`${nom} not found`);
+//     return;
+//   }
+
+//   const produit = inventory[index];
+
+//   if (produit.quantite < quantite) {
+//     console.log(`Not enough ${produit.nom} available, remaining pieces: ${produit.quantite}`);
+//   } else {
+//     produit.quantite -= quantite;
+
+//     if (produit.quantite === 0) {
+//       inventory.splice(index, 1);
+//     }
+
+//     console.log(`Remaining ${produit.nom} pieces: ${produit.quantite}`);
+//   }
+// }
+
+
+
+
+// removeProduct("stylo", 1); // Remaining stylo pieces: 2
+// removeProduct("stylo", 5); // Not enough stylo available, remaining pieces: 2
+// removeProduct("stylo", 2); // Remaining stylo pieces: 0 → supprimé
+// removeProduct("stylo", 1); // stylo not found
+
+
+
+
+// function generatePassword(passwordLength){
+//   const digit = '0123456789';
+//   const ascii_lowercase = 'abcdefghijklmnopqrstuvwxyz';
+//   const ascii_upercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+//   const punctuation = ',;:!?./§&é"*+.()-_ç=~#{}[]|`\^@';
+
+//   const allChar = ascii_lowercase + ascii_upercase+ digit+punctuation;
+//   let password = '';
+//   for(let i= 0; i<passwordLength; i++){
+//     password +=allChar[Math.floor(Math.random()*allChar.length)];
+//   }
+//   return password;
+// }
+
+
+// console.log(generatePassword(12));
+
+// function generatePassword(length) {
+//   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
+//   let result = '';
+//   for (let i = 0; i < length; i++) {
+//     result += characters[Math.floor(Math.random() * characters.length)];
+//   }
+//   return result;
+// }
+
+// // Appel avec un argument numérique et stockage dans la variable `password`
+// const password = generatePassword(12);
+
+// // Affichage conforme
+// console.log("Generated password: " + password);
+
+
+// const numbers = [3, 4, 5, 6, 7].map((element, index, array) => {
+//   console.log("Element:", element);
+//   console.log("Index:", index);
+//   console.log("Array:", array);
+//   return element * 2;
+// });
+
+
+console.log(navigator.userAgent);
+console.log(navigator.language);
+console.log(window.innerWidth);
+console.log(window.location);
+console.log(document.children);
+    </script>
+</body>
+</html>

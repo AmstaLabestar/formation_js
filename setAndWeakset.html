@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 1. Ensemble avec Set (noms uniques)
+let utilisateurs = new Set();
+
+utilisateurs.add("Ali");
+utilisateurs.add("Sita");
+utilisateurs.add("Ali");  // doublon, ignoré automatiquement
+
+console.log("👥 Utilisateurs connectés (Set) :", utilisateurs);
+// → Set { 'Ali', 'Sita' }
+
+// 2. Création d'objets utilisateurs
+let user1 = { nom: "Ali" };
+let user2 = { nom: "Sita" };
+let user3 = { nom: "Ali" };  // même nom, autre objet (autre référence)
+
+// 3. Ensemble temporaire avec WeakSet
+let dejaVerifies = new WeakSet();
+
+dejaVerifies.add(user1);
+dejaVerifies.add(user2);
+
+console.log("✔️ user1 vérifié ?", dejaVerifies.has(user1));  // true
+console.log("❌ user3 vérifié ?", dejaVerifies.has(user3));  // false
+
+// 4. Simulation de suppression
+user1 = null;  // L'objet sera libéré automatiquement (garbage collected)
+
+// pas possible de faire ça ↓↓↓
+// for (let u of dejaVerifies) {}   // ❌ TypeError
+
+
+
+
+
+
+// ____________________________________________________________________________________________________
+
+// 🔹 Données de départ
+const inscriptions = [
+  "ali@gmail.com",
+  "maria@yahoo.fr",
+  "ali@gmail.com",
+  "sita@outlook.com",
+  "maria@yahoo.fr",
+  "ali@gmail.com",
+];
+
+// 🔹 PARTIE A – Supprimer les doublons avec Set
+const uniques = [...new Set(inscriptions)];
+
+console.log("📬 Emails uniques :", uniques);
+// Résultat attendu : ["ali@gmail.com", "maria@yahoo.fr", "sita@outlook.com"]
+
+
+// 🔸 PARTIE B – Compter les occurrences avec reduce
+const statistiques = inscriptions.reduce((acc, email) => {
+  if (acc[email]) {
+    acc[email] += 1; // L'email existe déjà, on incrémente
+  } else {
+    acc[email] = 1;  // Première apparition, on initialise à 1
+  }
+  return acc;
+}, {}); // On part d’un objet vide {}
+
+console.log("📊 Statistiques des inscriptions :", statistiques);
+// Résultat attendu : {
+//   "ali@gmail.com": 3,
+//   "maria@yahoo.fr": 2,
+//   "sita@outlook.com": 1
+// }
+
+
+    </script>
+</body>
+</html>

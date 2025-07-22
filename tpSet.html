@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Inscriptions Événement</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    h2 {
+      color: #007acc;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .card {
+      background: #f1f1f1;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+    }
+
+    .form {
+      background: #e9f5ff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      margin-bottom: 20px;
+    }
+
+    .form label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .form input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    .form button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #007acc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form button:hover {
+      background-color: #005fa3;
+    }
+  </style>
+</head>
+<body>
+  <form class="form">
+    <label for="name">Nom :</label>
+    <input type="text" name="nom" id="name" placeholder="Ex : Alice Kaboré" required />
+    <label for="email">Email :</label>
+    <input type="email" name="email" id="email" placeholder="Ex : alice@email.com" required />
+    <button type="submit">Envoyer</button>
+  </form>
+
+  <h2>📋 Participants uniques</h2>
+  <div id="participants"></div>
+
+  <h2>📊 Statistiques des inscriptions</h2>
+  <div id="stats"></div>
+
+<script>
+  const form = document.querySelector(".form");
+  const nom = document.getElementById("name");
+  const email = document.getElementById("email");
+  const inscriptions = [];
+
+  // Charger les inscriptions existantes du serveur
+  async function chargerInscriptions() {
+    try {
+      const res = await fetch("http://localhost:3000/inscriptions");
+      const data = await res.json();
+      inscriptions.push(...data); // Ajouter au tableau local
+      afficherParticipantsEtStats();
+    } catch (err) {
+      console.error("Erreur lors du chargement des inscriptions :", err);
+    }
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const data = {
+      nom: nom.value.trim(),
+      email: email.value.trim().toLowerCase(),
+    };
+
+    try {
+      const res = await fetch("http://localhost:3000/inscription", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const result = await res.json();
+      if (res.ok) {
+        inscriptions.push(data);
+        afficherParticipantsEtStats();
+        form.reset();
+        alert(result.message);
+      } else {
+        alert(result.message);
+      }
+    } catch (err) {
+      alert("❌ Erreur de connexion au serveur");
+      console.error(err);
+    }
+  });
+
+  function afficherParticipantsEtStats() {
+    const participantsDiv = document.getElementById("participants");
+    const statsDiv = document.getElementById("stats");
+    participantsDiv.innerHTML = "";
+    statsDiv.innerHTML = "";
+
+    const emailsVus = new Set();
+    const participantsUniques = inscriptions.filter((p) => {
+      if (emailsVus.has(p.email)) return false;
+      emailsVus.add(p.email);
+      return true;
+    });
+
+    const statistiques = inscriptions.reduce((acc, p) => {
+      acc[p.email] = (acc[p.email] || 0) + 1;
+      return acc;
+    }, {});
+
+    participantsUniques.forEach((p) => {
+      participantsDiv.innerHTML += `<div class="card">👤 ${p.nom} - ${p.email}</div>`;
+    });
+
+    for (let email in statistiques) {
+      statsDiv.innerHTML += `<div class="card">📧 ${email} : ${statistiques[email]} inscription(s)</div>`;
+    }
+  }
+
+  // Appel initial
+  chargerInscriptions();
+</script>
+
+</body>
+</html>

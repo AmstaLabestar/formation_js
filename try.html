@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classe Voiture avec gestion d'erreur</title>
+</head>
+<body>
+    <script>
+
+
+
+
+const user = [{
+  nom: "Ibrahim",
+  age: 22,
+  isAdmin: true
+},
+{
+    nom: "Alice",
+  age: 25,
+  isAdmin: false
+},
+{
+    nom: "Ali",
+  age: 23,
+  isAdmin: true
+}
+];
+// const userClone = structuredClone(user);
+const userClone =[...user];
+console.log(userClone);
+
+// const entries = [["nom", "Ali"], ["age", 24],["nom", "Alice"], ["age", 30],["nom", "Safi"], ["age", 52]];
+// const obj = Object.fromEntries(entries);
+// console.log(obj);
+
+// function diviser(a, b) {
+//     if (b === 0) {
+//         throw new Error("Division par zéro interdite !");
+//     }
+//     return a / b;
+// }
+// diviser(5,0)
+
+//         try {
+//     let x = y + 1; // y n’est pas défini
+// } catch (e) {
+//     console.error("Erreur attrapée :", e.message);
+// }
+
+
+
+
+
+
+
+
+
+        // class Voiture {
+        //     constructor(marque, vitesse) {
+        //         if (vitesse < 0) {
+        //             throw new Error("La vitesse ne peut pas être négative !");
+        //         }
+        //         this.marque = marque;
+        //         this.vitesse = vitesse;
+        //     }
+
+        //     afficherInfo() {
+        //         console.log(`Voiture : ${this.marque}, Vitesse : ${this.vitesse} km/h`);
+        //     }
+        // }
+
+        // try {
+            
+        //     const voiture2 = new Voiture("BMW", -50); // Ceci va générer une erreur
+        //     voiture2.afficherInfo();
+        //     const voiture1 = new Voiture("Toyota", 120);
+        //     voiture1.afficherInfo();
+
+        // } catch (e) {
+        //     console.error("Erreur attrapée :", e.message);
+        // }
+    </script>
+</body>
+</html>
