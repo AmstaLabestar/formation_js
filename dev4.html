@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="business">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>dev 4 · Portfolio – Web, Mobile, IA</title>
+  <meta name="description" content="Portfolio de dev 4 – Développeur web & mobile. Intérêt: NLP, Data Engineering. Stack: JS/React, Python (NumPy, pandas, Matplotlib), Node.js/Express, Django, TailwindCSS + DaisyUI." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind & DaisyUI via CDN only (single file) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+          colors: { primary: { DEFAULT: '#22c55e' } }
+        }
+      }
+    }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+    .section { scroll-margin-top: 88px; }
+    .glass { backdrop-filter: blur(10px); background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); }
+  </style>
+</head>
+<body class="font-sans antialiased">
+  <!-- Navbar -->
+  <header class="navbar bg-base-100/70 sticky top-0 z-50 glass">
+    <div class="navbar-start">
+      <a href="#accueil" class="btn btn-ghost normal-case text-xl font-extrabold tracking-tight"><span class="text-primary">dev</span> 4</a>
+    </div>
+    <div class="navbar-center hidden lg:flex">
+      <ul class="menu menu-horizontal px-1 font-medium">
+        <li><a href="#skills">Compétences</a></li>
+        <li><a href="#projects">Projets</a></li>
+        <li><a href="#stack">Stack</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="navbar-end gap-2">
+      <div class="dropdown dropdown-end">
+        <div tabindex="0" role="button" class="btn btn-ghost">Thème</div>
+        <ul tabindex="0" class="menu dropdown-content bg-base-200 rounded-box z-[1] w-52 p-2 shadow">
+          <li><a data-theme-value="business">Business</a></li>
+          <li><a data-theme-value="dark">Dark</a></li>
+          <li><a data-theme-value="light">Light</a></li>
+          <li><a data-theme-value="forest">Forest</a></li>
+          <li><a data-theme-value="synthwave">Synthwave</a></li>
+          <li><a data-theme-value="corporate">Corporate</a></li>
+        </ul>
+      </div>
+      <a href="#contact" class="btn btn-primary btn-sm">Travaillons ensemble</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="accueil" class="section min-h-[80vh] grid place-items-center bg-base-200">
+    <div class="max-w-6xl w-full px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <div class="badge badge-primary badge-lg mb-4">Disponible freelance / stage</div>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+          dev 4
+          <span class="block text-primary">Développeur Web & Mobile</span>
+        </h1>
+        <p class="mt-4 text-base-content/80 max-w-prose">
+          Je conçois des applications web et mobiles modernes. Je m'intéresse particulièrement au
+          <span class="font-semibold">NLP</span> et au <span class="font-semibold">Data Engineering</span>.
+          Côté stack : <b>JS/React</b>, <b>Python</b> (NumPy, pandas, Matplotlib), <b>Node.js/Express</b>, <b>Django</b>,
+          <b>TailwindCSS</b> & <b>DaisyUI</b>.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          <div class="badge badge-outline">NLP</div>
+          <div class="badge badge-outline">Data Engineering</div>
+          <div class="badge badge-outline">React</div>
+          <div class="badge badge-outline">Python</div>
+          <div class="badge badge-outline">Node/Express</div>
+          <div class="badge badge-outline">Django</div>
+          <div class="badge badge-outline">Tailwind + DaisyUI</div>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <button id="btnDownloadCV" class="btn btn-primary">Télécharger CV</button>
+          <a href="#projects" class="btn btn-outline">Voir mes projets</a>
+          <button id="btnPrint" class="btn">Imprimer</button>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="mockup-code text-sm">
+          <pre data-prefix=">"><code>npm create vite@latest my-app</code></pre>
+          <pre data-prefix=">"><code>cd my-app &amp;&amp; npm i tailwindcss daisyui</code></pre>
+          <pre data-prefix=">"><code>python -m venv .venv &amp;&amp; pip install numpy pandas matplotlib</code></pre>
+          <pre data-prefix=">"><code>django-admin startproject api &amp;&amp; uvicorn api.asgi:application</code></pre>
+          <pre data-prefix=">"><code>node src/index.js  # express()</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="section max-w-6xl mx-auto px-4 py-16">
+    <h2 class="text-3xl font-bold">Compétences</h2>
+    <p class="text-base-content/70 mt-2 max-w-prose">Front, back et data : je passe de l'UI au backend en gardant la qualité et la performance au centre.</p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+      <div class="card bg-base-200"><div class="card-body"><h3 class="card-title">Frontend</h3><p>React, Vite, React Router, Zustand, Form, Toast, accessibilité, tests.</p><progress class="progress progress-primary w-full" value="85" max="100"></progress></div></div>
+      <div class="card bg-base-200"><div class="card-body"><h3 class="card-title">Backend</h3><p>Node.js (Express), Django, REST, auth JWT, WebSocket, fichiers, mailer.</p><progress class="progress progress-primary w-full" value="80" max="100"></progress></div></div>
+      <div class="card bg-base-200"><div class="card-body"><h3 class="card-title">Python & Data</h3><p>NumPy, pandas, Matplotlib ; nettoyage, EDA, scripts ETL simples.</p><progress class="progress progress-primary w-full" value="75" max="100"></progress></div></div>
+      <div class="card bg-base-200"><div class="card-body"><h3 class="card-title">NLP (débutant+)</h3><p>Tokenisation, embeddings, classification simple, vector stores.</p><progress class="progress progress-primary w-full" value="60" max="100"></progress></div></div>
+      <div class="card bg-base-200"><div class="card-body"><h3 class="card-title">UI/UX</h3><p>TailwindCSS, DaisyUI, composants réutilisables, micro‑interactions.</p><progress class="progress progress-primary w-full" value="85" max="100"></progress></div></div>
+      <div class="card bg-base-200"><div class="card-body"><h3 class="card-title">Outils</h3><p>Git/GitHub, Docker (basics), Postman, SQLite/PostgreSQL, CI/CD (basics).</p><progress class="progress progress-primary w-full" value="70" max="100"></progress></div></div>
+    </div>
+  </section>
+
+  <!-- Stack quick list -->
+  <section id="stack" class="section bg-base-200">
+    <div class="max-w-6xl mx-auto px-4 py-16">
+      <h2 class="text-3xl font-bold">Stack Technique</h2>
+      <div class="mt-6 flex flex-wrap gap-2">
+        <div class="badge">JavaScript</div>
+        <div class="badge">React</div>
+        <div class="badge">Node.js</div>
+        <div class="badge">Express</div>
+        <div class="badge">Python</div>
+        <div class="badge">Django</div>
+        <div class="badge">NumPy</div>
+        <div class="badge">pandas</div>
+        <div class="badge">Matplotlib</div>
+        <div class="badge">TailwindCSS</div>
+        <div class="badge">DaisyUI</div>
+        <div class="badge">SQLite</div>
+        <div class="badge">PostgreSQL</div>
+        <div class="badge">Docker</div>
+        <div class="badge">Git</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="section max-w-6xl mx-auto px-4 py-16">
+    <div class="flex items-end justify-between gap-4 flex-wrap">
+      <div>
+        <h2 class="text-3xl font-bold">Projets</h2>
+        <p class="text-base-content/70">Quelques réalisations (plus de détails dans mon GitHub).</p>
+      </div>
+      <div class="join">
+        <input id="search" type="text" placeholder="Rechercher…" class="input input-bordered join-item" />
+        <select id="filter" class="select select-bordered join-item">
+          <option value="all">Tous</option>
+          <option value="frontend">Frontend</option>
+          <option value="backend">Backend</option>
+          <option value="nlp">NLP / Data</option>
+          <option value="ecommerce">E‑commerce</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="gridProjects" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+      <!-- Card 1: Portfolios clients -->
+      <article class="card bg-base-200 shadow project" data-tags="frontend">
+        <figure class="h-40 bg-gradient-to-br from-primary/30 to-cyan-400/30"></figure>
+        <div class="card-body">
+          <h3 class="card-title">Portfolios Clients (x2)</h3>
+          <p>Conception & intégration de deux portfolios modernes (Tailwind + DaisyUI), SEO de base, déploiement.</p>
+          <div class="flex flex-wrap gap-2">
+            <div class="badge badge-outline">React</div>
+            <div class="badge badge-outline">Tailwind</div>
+            <div class="badge badge-outline">Vite</div>
+          </div>
+          <div class="card-actions justify-between items-center">
+            <a class="btn btn-outline btn-sm" href="#" target="_blank" rel="noreferrer">Démo</a>
+            <a class="btn btn-primary btn-sm" href="#" target="_blank" rel="noreferrer">Code GitHub</a>
+          </div>
+        </div>
+      </article>
+      <!-- Card 2: eNaissance -->
+      <article class="card bg-base-200 shadow project" data-tags="backend frontend">
+        <figure class="h-40 bg-gradient-to-br from-primary/30 to-emerald-400/30"></figure>
+        <div class="card-body">
+          <h3 class="card-title">eNaissance (plateforme)</h3>
+          <p>Formulaires avancés, validation, pièces jointes, dashboard agent, API mock/JSON Server, intégration future Django.</p>
+          <div class="flex flex-wrap gap-2">
+            <div class="badge badge-outline">React</div>
+            <div class="badge badge-outline">Node/Django (à venir)</div>
+            <div class="badge badge-outline">Tailwind/DaisyUI</div>
+          </div>
+          <div class="card-actions justify-between items-center">
+            <a class="btn btn-outline btn-sm" href="#" target="_blank" rel="noreferrer">Démo</a>
+            <a class="btn btn-primary btn-sm" href="#" target="_blank" rel="noreferrer">Repo GitHub</a>
+          </div>
+        </div>
+      </article>
+      <!-- Card 3: E‑commerce maillots -->
+      <article class="card bg-base-200 shadow project" data-tags="frontend backend ecommerce">
+        <figure class="h-40 bg-gradient-to-br from-primary/30 to-fuchsia-400/30"></figure>
+        <div class="card-body">
+          <h3 class="card-title">Boutique Maillots</h3>
+          <p>Catalogue, panier, commandes, admin simple. REST API Express, front React (ou Django selon version).</p>
+          <div class="flex flex-wrap gap-2">
+            <div class="badge badge-outline">Express</div>
+            <div class="badge badge-outline">React</div>
+            <div class="badge badge-outline">Stripe (mock)</div>
+          </div>
+          <div class="card-actions justify-between items-center">
+            <a class="btn btn-outline btn-sm" href="#" target="_blank" rel="noreferrer">Démo</a>
+            <a class="btn btn-primary btn-sm" href="#" target="_blank" rel="noreferrer">Repo GitHub</a>
+          </div>
+        </div>
+      </article>
+      <!-- Card 4: NLP mini-lab -->
+      <article class="card bg-base-200 shadow project" data-tags="nlp data">
+        <figure class="h-40 bg-gradient-to-br from-primary/30 to-indigo-400/30"></figure>
+        <div class="card-body">
+          <h3 class="card-title">NLP Mini‑Lab</h3>
+          <p>Expérimentations tokenisation, TF‑IDF/embeddings, classification simple, visualisation Matplotlib.</p>
+          <div class="flex flex-wrap gap-2">
+            <div class="badge badge-outline">Python</div>
+            <div class="badge badge-outline">pandas</div>
+            <div class="badge badge-outline">Matplotlib</div>
+          </div>
+          <div class="card-actions justify-between items-center">
+            <a class="btn btn-outline btn-sm" href="#" target="_blank" rel="noreferrer">Notebook</a>
+            <a class="btn btn-primary btn-sm" href="#" target="_blank" rel="noreferrer">Repo GitHub</a>
+          </div>
+        </div>
+      </article>
+      <!-- Card 5: Boilerplate React + DaisyUI -->
+      <article class="card bg-base-200 shadow project" data-tags="frontend">
+        <figure class="h-40 bg-gradient-to-br from-primary/30 to-rose-400/30"></figure>
+        <div class="card-body">
+          <h3 class="card-title">Boilerplate React + DaisyUI</h3>
+          <p>Kit de démarrage avec routing, auth mock, formulaires, toasts, layout et thèmes DaisyUI.</p>
+          <div class="flex flex-wrap gap-2">
+            <div class="badge badge-outline">React</div>
+            <div class="badge badge-outline">Tailwind</div>
+            <div class="badge badge-outline">DaisyUI</div>
+          </div>
+          <div class="card-actions justify-between items-center">
+            <a class="btn btn-outline btn-sm" href="#" target="_blank" rel="noreferrer">Démo</a>
+            <a class="btn btn-primary btn-sm" href="#" target="_blank" rel="noreferrer">Repo GitHub</a>
+          </div>
+        </div>
+      </article>
+      <!-- Card 6: API Express + SQLite -->
+      <article class="card bg-base-200 shadow project" data-tags="backend">
+        <figure class="h-40 bg-gradient-to-br from-primary/30 to-amber-400/30"></figure>
+        <div class="card-body">
+          <h3 class="card-title">API Express + SQLite</h3>
+          <p>CRUD, auth JWT, pagination, tests Postman, prêt pour déploiement léger.</p>
+          <div class="flex flex-wrap gap-2">
+            <div class="badge badge-outline">Node</div>
+            <div class="badge badge-outline">Express</div>
+            <div class="badge badge-outline">SQLite</div>
+          </div>
+          <div class="card-actions justify-between items-center">
+            <a class="btn btn-outline btn-sm" href="#" target="_blank" rel="noreferrer">Docs API</a>
+            <a class="btn btn-primary btn-sm" href="#" target="_blank" rel="noreferrer">Repo GitHub</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section bg-base-200">
+    <div class="max-w-6xl mx-auto px-4 py-16">
+      <h2 class="text-3xl font-bold">Contact</h2>
+      <p class="text-base-content/70 mt-2 max-w-prose">Parlez‑moi de votre idée (site, app mobile, intégration IA, optimisation data, etc.).</p>
+      <div class="grid md:grid-cols-2 gap-6 mt-8">
+        <form id="contactForm" class="card bg-base-100 shadow">
+          <div class="card-body">
+            <div class="form-control">
+              <label class="label"><span class="label-text">Nom</span></label>
+              <input required name="name" type="text" placeholder="Votre nom" class="input input-bordered" />
+            </div>
+            <div class="form-control">
+              <label class="label"><span class="label-text">Email</span></label>
+              <input required name="email" type="email" placeholder="vous@exemple.com" class="input input-bordered" />
+            </div>
+            <div class="form-control">
+              <label class="label"><span class="label-text">Message</span></label>
+              <textarea required name="message" class="textarea textarea-bordered" rows="4" placeholder="Décrivez votre besoin…"></textarea>
+            </div>
+            <div class="card-actions justify-between items-center">
+              <button type="submit" class="btn btn-primary">Envoyer</button>
+              <a id="mailtoLink" class="link">ou envoyez un email</a>
+            </div>
+            <p id="formStatus" class="text-sm text-base-content/70"></p>
+          </div>
+        </form>
+
+        <div class="space-y-4">
+          <div class="alert">
+            <div>
+              <h4 class="font-semibold">Disponibilité</h4>
+              <p>Ouagadougou · Missions à distance / sur site</p>
+            </div>
+          </div>
+          <div class="card bg-base-100">
+            <div class="card-body">
+              <h4 class="card-title">Réseaux</h4>
+              <div class="space-y-2">
+                <div class="flex items-center gap-2">
+                  <span class="badge">Email</span>
+                  <button id="copyEmail" class="link">dev4@example.com</button>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="badge">GitHub</span>
+                  <a class="link" href="#" target="_blank" rel="noreferrer">github.com/dev4</a>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="badge">LinkedIn</span>
+                  <a class="link" href="#" target="_blank" rel="noreferrer">linkedin.com/in/dev4</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10 border-t border-base-300">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm">© <span id="year"></span> dev 4 — Web, Mobile & IA</p>
+      <div class="flex items-center gap-3">
+        <a href="#accueil" class="btn btn-sm">Haut de page</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    // Theme persistence
+    const applyTheme = (t) => { if(!t) return; document.documentElement.setAttribute('data-theme', t); localStorage.setItem('daisyui-theme', t); };
+    const savedTheme = localStorage.getItem('daisyui-theme'); if(savedTheme) applyTheme(savedTheme);
+    document.querySelectorAll('[data-theme-value]').forEach(el=> el.addEventListener('click', ()=> applyTheme(el.getAttribute('data-theme-value'))));
+
+    // Print
+    document.getElementById('btnPrint')?.addEventListener('click', () => window.print());
+
+    // Simple TXT CV generator
+    document.getElementById('btnDownloadCV')?.addEventListener('click', () => {
+      const lines = [
+        'dev 4 — Développeur Web & Mobile',
+        'Ouagadougou · Email: dev4@example.com',
+        '',
+        'PROFIL',
+        'Développeur orienté produits web & mobile. Intérêt pour le NLP et le Data Engineering.',
+        '',
+        'COMPÉTENCES',
+        '- Frontend: React, TailwindCSS, DaisyUI',
+        '- Backend: Node.js/Express, Django (API REST)',
+        '- Python: NumPy, pandas, Matplotlib',
+        '',
+        'PROJETS',
+        '- Portfolios clients (x2) — intégration complète',
+        '- eNaissance — plateforme de déclaration (en cours)',
+        '- Boutique maillots — e‑commerce React/Express',
+      ].join('\n');
+      const blob = new Blob([lines], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'dev4-CV.txt'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+
+    // Contact form → mailto
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    const mailto = document.getElementById('mailtoLink');
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const name = (data.get('name')||'').toString().trim();
+      const email = (data.get('email')||'').toString().trim();
+      const message = (data.get('message')||'').toString().trim();
+      if (!name || !email || !message) { status.textContent = 'Veuillez remplir tous les champs.'; return; }
+      const subject = encodeURIComponent('Contact Portfolio — ' + name);
+      const body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
+      const href = `mailto:dev4@example.com?subject=${subject}&body=${body}`;
+      mailto.setAttribute('href', href);
+      status.textContent = 'Cliquez sur « ou envoyez un email » pour finaliser.';
+      mailto.focus();
+    });
+
+    // Copy email
+    document.getElementById('copyEmail')?.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText('dev4@example.com'); alert('Adresse email copiée.'); } catch {}
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Project filtering + search
+    const search = document.getElementById('search');
+    const filter = document.getElementById('filter');
+    const cards = Array.from(document.querySelectorAll('#gridProjects .project'));
+    const applyFilter = () => {
+      const q = (search.value || '').toLowerCase();
+      const f = filter.value;
+      cards.forEach(c => {
+        const matchesTag = f === 'all' || (c.dataset.tags || '').includes(f);
+        const text = c.textContent.toLowerCase();
+        const matchesSearch = !q || text.includes(q);
+        c.style.display = (matchesTag && matchesSearch) ? '' : 'none';
+      });
+    };
+    search?.addEventListener('input', applyFilter);
+    filter?.addEventListener('change', applyFilter);
+  </script>
+</body>
+</html>

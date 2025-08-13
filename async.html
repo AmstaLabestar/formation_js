@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programmation Async</title>
+</head>
+<body>
+    <script>
+ 
+
+//  function getData(callback){
+//     setTimeout(() => {
+//         const data = "Données récupérées";
+//         callback(data);
+//     }, 2000);
+
+//  }
+//   getData(data =>{
+//     console.log(data); // "Données récupérées" après 2 secondes
+//   })
+
+// const fetchData = () => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve("Données reçues !");
+//     }, 1000);
+//   });
+// };
+
+// fetchData().then((data) => {
+//   console.log(data); // "Données reçues !" après 1 seconde
+// });
+
+
+
+
+// Étape 1 : Prendre la commande (2 secondes)
+function prendreCommande() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Commande prise");
+    }, 2000);
+  });
+}
+
+// Étape 2 : Préparer le plat (3 secondes)
+function preparerPlat() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Plat prêt");
+    }, 2000);
+  });
+}
+
+// Étape 3 : Servir le plat (1 seconde)
+function servirPlat() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Plat servi");
+    }, 1000);
+  });
+}
+
+// Fonction principale asynchrone
+async function restaurant() {
+  console.log("Commande en cours...");
+
+  const commande = await prendreCommande(); // attend 2s
+  console.log(commande);                    // "Commande prise"
+
+  const plat = await preparerPlat();       // attend 3s
+  console.log(plat);                       // "Plat prêt"
+
+  const service = await servirPlat();      // attend 1s
+  console.log(service);                    // "Plat servi"
+}
+
+// Lancer la simulation
+restaurant();
+
+
+    </script>
+</body>
+</html>

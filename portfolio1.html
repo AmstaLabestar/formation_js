@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="business">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio · Administrateur Réseaux – Kabore Daoda</title>
+  <meta name="description" content="Portfolio d'un Administrateur Réseaux : compétences, projets, expériences, certifications et contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind & DaisyUI via CDN (single-file setup) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+          colors: {
+            primary: {
+              DEFAULT: '#22c55e' // Accent vert discret
+            },
+          },
+        }
+      },
+    }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+    /* Fine-tuning */
+    .glass { backdrop-filter: blur(10px); background: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); }
+    .section { scroll-margin-top: 90px; }
+  </style>
+</head>
+<body class="font-sans antialiased">
+  <!-- Navbar -->
+  <header class="navbar bg-base-100/70 sticky top-0 z-50 glass">
+    <div class="navbar-start">
+      <a href="#accueil" class="btn btn-ghost normal-case text-xl font-bold tracking-tight"><span class="text-primary">Net</span>Admin</a>
+    </div>
+
+    <div class="navbar-center hidden lg:flex">
+      <ul class="menu menu-horizontal px-1 font-medium">
+        <li><a href="#competences">Compétences</a></li>
+        <li><a href="#projets">Projets</a></li>
+        <li><a href="#experience">Expérience</a></li>
+        <li><a href="#certifs">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="navbar-end gap-2">
+      <!-- Theme Switcher -->
+      <div class="dropdown dropdown-end">
+        <div tabindex="0" role="button" class="btn btn-ghost">Thème</div>
+        <ul tabindex="0" class="menu dropdown-content bg-base-200 rounded-box z-[1] w-52 p-2 shadow">
+          <li><a data-theme-value="business">Business</a></li>
+          <li><a data-theme-value="dark">Dark</a></li>
+          <li><a data-theme-value="light">Light</a></li>
+          <li><a data-theme-value="forest">Forest</a></li>
+          <li><a data-theme-value="synthwave">Synthwave</a></li>
+          <li><a data-theme-value="corporate">Corporate</a></li>
+        </ul>
+      </div>
+      <a href="#contact" class="btn btn-primary btn-sm">Engagez‑moi</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="accueil" class="section min-h-[80vh] grid place-items-center bg-base-200">
+    <div class="max-w-6xl w-full px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <div class="badge badge-primary badge-lg mb-4">Disponible pour mission</div>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+          Kabore Daoda
+          <span class="block text-primary">Administrateur Réseaux</span>
+        </h1>
+        <p class="mt-4 text-base-content/80 max-w-prose">
+          J'installe, sécurise et supervise des infrastructures réseaux LAN/WAN, Wi‑Fi et Cloud.
+          Passionné d'automatisation (Ansible), de monitoring (Zabbix/Prometheus) et de sécurité (pfSense, IDS/IPS).
+        </p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          <div class="badge badge-outline">Cisco</div>
+          <div class="badge badge-outline">MikroTik</div>
+          <div class="badge badge-outline">Linux</div>
+          <div class="badge badge-outline">Wi‑Fi</div>
+          <div class="badge badge-outline">Sécurité</div>
+          <div class="badge badge-outline">Cloud</div>
+          <div class="badge badge-outline">DevOps</div>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <button id="btnDownloadCV" class="btn btn-primary">Télécharger CV</button>
+          <a href="#projets" class="btn btn-outline">Voir mes projets</a>
+          <button id="btnPrint" class="btn">Imprimer</button>
+        </div>
+      </div>
+      <div class="relative">
+        <!-- Simple inline SVG avatar / topology ring -->
+        <div class="mockup-window border bg-base-300">
+          <div class="px-4 py-8 bg-base-200">
+            <svg viewBox="0 0 480 300" class="w-full h-[320px]">
+              <defs>
+                <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#22c55e"/>
+                  <stop offset="100%" stop-color="#06b6d4"/>
+                </linearGradient>
+              </defs>
+              <!-- Core switches -->
+              <rect x="205" y="120" width="70" height="40" rx="8" fill="url(#g)" opacity="0.8"></rect>
+              <text x="240" y="145" text-anchor="middle" font-size="12" fill="white">Core</text>
+              <rect x="205" y="190" width="70" height="40" rx="8" fill="url(#g)" opacity="0.8"></rect>
+              <text x="240" y="215" text-anchor="middle" font-size="12" fill="white">Firewall</text>
+              <!-- Links -->
+              <line x1="240" y1="160" x2="240" y2="190" stroke="url(#g)" stroke-width="3"/>
+              <!-- Access switches & APs -->
+              <circle cx="90" cy="75" r="22" stroke="#06b6d4" stroke-width="3" fill="none"/>
+              <text x="90" y="80" text-anchor="middle" font-size="10" fill="currentColor">AP‑01</text>
+              <circle cx="390" cy="75" r="22" stroke="#06b6d4" stroke-width="3" fill="none"/>
+              <text x="390" y="80" text-anchor="middle" font-size="10" fill="currentColor">AP‑02</text>
+              <rect x="40" y="240" width="70" height="28" rx="6" fill="#06b6d4" opacity="0.7"></rect>
+              <text x="75" y="258" text-anchor="middle" font-size="10" fill="white">SW‑A</text>
+              <rect x="370" y="240" width="70" height="28" rx="6" fill="#06b6d4" opacity="0.7"></rect>
+              <text x="405" y="258" text-anchor="middle" font-size="10" fill="white">SW‑B</text>
+              <!-- Uplinks -->
+              <line x1="75" y1="240" x2="240" y2="140" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4"/>
+              <line x1="405" y1="240" x2="240" y2="140" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4"/>
+              <line x1="90" y1="97" x2="240" y2="205" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4"/>
+              <line x1="390" y1="97" x2="240" y2="205" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4"/>
+              <!-- Internet -->
+              <ellipse cx="240" cy="30" rx="60" ry="18" fill="#0ea5e9" opacity="0.7"></ellipse>
+              <text x="240" y="35" text-anchor="middle" font-size="12" fill="white">Internet</text>
+              <line x1="240" y1="48" x2="240" y2="120" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="section max-w-6xl mx-auto px-4 py-10">
+    <div class="stats stats-vertical lg:stats-horizontal w-full shadow">
+      <div class="stat">
+        <div class="stat-title">SLA Maintenu</div>
+        <div class="stat-value">99.9%</div>
+        <div class="stat-desc">sur 12 derniers mois</div>
+      </div>
+      <div class="stat">
+        <div class="stat-title">Sites Gérés</div>
+        <div class="stat-value">15+</div>
+        <div class="stat-desc">Campus & agences</div>
+      </div>
+      <div class="stat">
+        <div class="stat-title">Incidents Résolus</div>
+        <div class="stat-value">500+</div>
+        <div class="stat-desc">N1–N3, 24/7</div>
+      </div>
+      <div class="stat">
+        <div class="stat-title">Automatisations</div>
+        <div class="stat-value">30+</div>
+        <div class="stat-desc">Ansible & scripts</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compétences -->
+  <section id="competences" class="section max-w-6xl mx-auto px-4 py-16">
+    <h2 class="text-3xl font-bold">Compétences Clés</h2>
+    <p class="text-base-content/70 mt-2 max-w-prose">De la conception d'architectures à l'exploitation quotidienne : adressage, routage, VLAN, QoS, sécurité, haute dispo et supervision.</p>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+      <!-- Skill card -->
+      <div class="card bg-base-200">
+        <div class="card-body">
+          <h3 class="card-title">Routage & Switching</h3>
+          <p>OSPF, EIGRP, BGP, STP/RSTP, EtherChannel, HSRP/VRRP.</p>
+          <progress class="progress progress-primary w-full" value="90" max="100"></progress>
+        </div>
+      </div>
+      <div class="card bg-base-200">
+        <div class="card-body">
+          <h3 class="card-title">Sécurité Réseau</h3>
+          <p>ACL, NAT/PAT, VPN IPsec/SSL, pfSense, IDS/IPS, 802.1X.</p>
+          <progress class="progress progress-primary w-full" value="85" max="100"></progress>
+        </div>
+      </div>
+      <div class="card bg-base-200">
+        <div class="card-body">
+          <h3 class="card-title">Wi‑Fi & Mobilité</h3>
+          <p>Site survey, contrôleurs, 2.4/5 GHz, roaming, sécurité WPA3.</p>
+          <progress class="progress progress-primary w-full" value="80" max="100"></progress>
+        </div>
+      </div>
+      <div class="card bg-base-200">
+        <div class="card-body">
+          <h3 class="card-title">Linux & Scripting</h3>
+          <p>Debian/Ubuntu, Bash, Ansible, supervision, sauvegardes.</p>
+          <progress class="progress progress-primary w-full" value="85" max="100"></progress>
+        </div>
+      </div>
+      <div class="card bg-base-200">
+        <div class="card-body">
+          <h3 class="card-title">Cloud & DevOps</h3>
+          <p>Proxies, reverse, Docker, CI/CD, sauvegardes hybrides.</p>
+          <progress class="progress progress-primary w-full" value="70" max="100"></progress>
+        </div>
+      </div>
+      <div class="card bg-base-200">
+        <div class="card-body">
+          <h3 class="card-title">ITSM & Documentation</h3>
+          <p>ITIL, CMDB légère, MOP, runbooks, gestion des changements.</p>
+          <progress class="progress progress-primary w-full" value="90" max="100"></progress>
+        </div>
+      </div>
+    </div>
+
+    <!-- Outils -->
+    <div class="mt-8">
+      <h3 class="text-xl font-semibold">Outils / Écosystème</h3>
+      <div class="flex flex-wrap gap-2 mt-3">
+        <div class="badge">Cisco IOS</div>
+        <div class="badge">MikroTik RouterOS</div>
+        <div class="badge">Ubiquiti</div>
+        <div class="badge">pfSense</div>
+        <div class="badge">Zabbix</div>
+        <div class="badge">Prometheus</div>
+        <div class="badge">Grafana</div>
+        <div class="badge">Ansible</div>
+        <div class="badge">Docker</div>
+        <div class="badge">Git</div>
+        <div class="badge">OpenVPN</div>
+        <div class="badge">WireGuard</div>
+        <div class="badge">Linux</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section bg-base-200">
+    <div class="max-w-6xl mx-auto px-4 py-16">
+      <h2 class="text-3xl font-bold">Ce que je propose</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+        <div class="card bg-base-100 shadow">
+          <div class="card-body">
+            <h3 class="card-title">Conception & Déploiement</h3>
+            <p>Architecture réseau scalable, adressage IPv4/IPv6, VLAN, routage, QoS, haute disponibilité.</p>
+          </div>
+        </div>
+        <div class="card bg-base-100 shadow">
+          <div class="card-body">
+            <h3 class="card-title">Sécurisation</h3>
+            <p>Pare‑feu, segmentation, IDS/IPS, durcissement, VPN site‑à‑site et nomades, sauvegardes.</p>
+          </div>
+        </div>
+        <div class="card bg-base-100 shadow">
+          <div class="card-body">
+            <h3 class="card-title">Supervision 24/7</h3>
+            <p>Alerting, tableaux de bord, capacity planning, réponse à incidents, post‑mortems.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projets -->
+  <section id="projets" class="section max-w-6xl mx-auto px-4 py-16">
+    <h2 class="text-3xl font-bold">Projets Sélectionnés</h2>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+      <!-- Projet 1 -->
+      <div class="card bg-base-200 shadow">
+        <figure class="h-40 bg-gradient-to-br from-primary/30 to-cyan-400/30"></figure>
+        <div class="card-body">
+          <h3 class="card-title">Migration LAN Campus</h3>
+          <p>Refonte complète (VLAN, OSPF, HSRP) avec bascule sans coupure et supervision.</p>
+          <div class="flex flex-wrap gap-2">
+            <div class="badge badge-outline">Cisco</div>
+            <div class="badge badge-outline">OSPF</div>
+            <div class="badge badge-outline">HSRP</div>
+          </div>
+          <div class="card-actions justify-end">
+            <button class="btn btn-outline btn-sm" data-modal="modal-projet1">Détails</button>
+          </div>
+        </div>
+      </div>
+      <!-- Projet 2 -->
+      <div class="card bg-base-200 shadow">
+        <figure class="h-40 bg-gradient-to-br from-primary/30 to-emerald-400/30"></figure>
+        <div class="card-body">
+          <h3 class="card-title">Sécurisation WAN Agences</h3>
+          <p>Mise en place VPN IPsec, segmentation par zones, pare‑feu redondants.</p>
+          <div class="flex flex-wrap gap-2">
+            <div class="badge badge-outline">pfSense</div>
+            <div class="badge badge-outline">IPsec</div>
+            <div class="badge badge-outline">HA</div>
+          </div>
+          <div class="card-actions justify-end">
+            <button class="btn btn-outline btn-sm" data-modal="modal-projet2">Détails</button>
+          </div>
+        </div>
+      </div>
+      <!-- Projet 3 -->
+      <div class="card bg-base-200 shadow">
+        <figure class="h-40 bg-gradient-to-br from-primary/30 to-fuchsia-400/30"></figure>
+        <div class="card-body">
+          <h3 class="card-title">Wi‑Fi Entreprise</h3>
+          <p>Étude, déploiement et optimisation roaming, portail invité, contrôleur central.</p>
+          <div class="flex flex-wrap gap-2">
+            <div class="badge badge-outline">Ubiquiti</div>
+            <div class="badge badge-outline">WPA3</div>
+            <div class="badge badge-outline">Controller</div>
+          </div>
+          <div class="card-actions justify-end">
+            <button class="btn btn-outline btn-sm" data-modal="modal-projet3">Détails</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modals Projets -->
+  <dialog id="modal-projet1" class="modal">
+    <div class="modal-box max-w-3xl">
+      <h3 class="font-bold text-lg">Migration LAN Campus</h3>
+      <p class="py-2">Design L3 (Core/Distribution/Access), agrégation EtherChannel, HSRP, OSPF Area 0 + areas de distribution, QoS voix. Bascule en maintenance de nuit, rollback plan prêt.</p>
+      <div class="modal-action">
+        <form method="dialog"><button class="btn">Fermer</button></form>
+      </div>
+    </div>
+  </dialog>
+  <dialog id="modal-projet2" class="modal">
+    <div class="modal-box max-w-3xl">
+      <h3 class="font-bold text-lg">Sécurisation WAN Agences</h3>
+      <p class="py-2">Pare‑feu redondants, tunnels IPsec site‑à‑site, split‑tunneling pour critiques, onboarding Zero‑Trust pour nomades (WireGuard), supervision Grafana.</p>
+      <div class="modal-action">
+        <form method="dialog"><button class="btn">Fermer</button></form>
+      </div>
+    </div>
+  </dialog>
+  <dialog id="modal-projet3" class="modal">
+    <div class="modal-box max-w-3xl">
+      <h3 class="font-bold text-lg">Wi‑Fi Entreprise</h3>
+      <p class="py-2">Étude radio (site survey), plan de canaux, contrôleur central, SSID invités isolés, VLAN par rôle, portail captif, monitoring des interférences.</p>
+      <div class="modal-action">
+        <form method="dialog"><button class="btn">Fermer</button></form>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Expérience -->
+  <section id="experience" class="section bg-base-200">
+    <div class="max-w-6xl mx-auto px-4 py-16">
+      <h2 class="text-3xl font-bold">Expérience</h2>
+      <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical mt-8">
+        <li>
+          <div class="timeline-middle">
+            <span class="badge badge-primary">2024 – Présent</span>
+          </div>
+          <div class="timeline-start md:text-end mb-10">
+            <div class="text-lg font-semibold">Administrateur Réseaux – Freelance</div>
+            <div class="text-base-content/70">Conception, déploiement et MCO pour PME/Universités (LAN/WAN, sécurité, Wi‑Fi, monitoring).</div>
+          </div>
+          <hr/>
+        </li>
+        <li>
+          <hr/>
+          <div class="timeline-middle">
+            <span class="badge">2022 – 2024</span>
+          </div>
+          <div class="timeline-end mb-10">
+            <div class="text-lg font-semibold">Technicien Réseaux</div>
+            <div class="text-base-content/70">Support N2/N3, déploiements d'accès, scripts d'automatisation (Ansible), documentation.</div>
+          </div>
+          <hr/>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certifs" class="section max-w-6xl mx-auto px-4 py-16">
+    <h2 class="text-3xl font-bold">Certifications & Formations</h2>
+    <div class="mt-6 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="card bg-base-200">
+        <div class="card-body">
+          <h3 class="card-title">Cisco CCNA (en cours)</h3>
+          <p>Routage & switching, réseaux d'entreprise, sécurité de base.</p>
+        </div>
+      </div>
+      <div class="card bg-base-200">
+        <div class="card-body">
+          <h3 class="card-title">MikroTik MTCNA</h3>
+          <p>Configuration RouterOS, bridging, routing, firewalls, wireless.</p>
+        </div>
+      </div>
+      <div class="card bg-base-200">
+        <div class="card-body">
+          <h3 class="card-title">Linux (LPIC‑1/Equivalent)</h3>
+          <p>Administration systèmes, réseaux, sécurité, scripting.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section bg-base-200">
+    <div class="max-w-6xl mx-auto px-4 py-16">
+      <h2 class="text-3xl font-bold">Me contacter</h2>
+      <p class="text-base-content/70 mt-2 max-w-prose">Décrivez brièvement votre besoin (projet, maintenance, audit, formation). Je réponds rapidement.</p>
+      <div class="grid md:grid-cols-2 gap-6 mt-8">
+        <form id="contactForm" class="card bg-base-100 shadow">
+          <div class="card-body">
+            <div class="form-control">
+              <label class="label"><span class="label-text">Nom</span></label>
+              <input required name="name" type="text" placeholder="Votre nom" class="input input-bordered" />
+            </div>
+            <div class="form-control">
+              <label class="label"><span class="label-text">Email</span></label>
+              <input required name="email" type="email" placeholder="vous@exemple.com" class="input input-bordered" />
+            </div>
+            <div class="form-control">
+              <label class="label"><span class="label-text">Message</span></label>
+              <textarea required name="message" class="textarea textarea-bordered" rows="4" placeholder="Décrivez votre besoin…"></textarea>
+            </div>
+            <div class="card-actions justify-between items-center">
+              <button type="submit" class="btn btn-primary">Envoyer</button>
+              <a id="mailtoLink" class="link">ou envoyez un email</a>
+            </div>
+            <p id="formStatus" class="text-sm text-base-content/70"></p>
+          </div>
+        </form>
+
+        <div class="space-y-4">
+          <div class="alert">
+            <div>
+              <h4 class="font-semibold">Disponibilité</h4>
+              <p>Ouagadougou · Missions sur site ou à distance (GMT+0)</p>
+            </div>
+          </div>
+          <div class="card bg-base-100">
+            <div class="card-body">
+              <h4 class="card-title">Coordonnées</h4>
+              <div class="space-y-2">
+                <div class="flex items-center gap-2">
+                  <span class="badge">Email</span>
+                  <button id="copyEmail" class="link">kabore.daoda@example.com</button>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="badge">LinkedIn</span>
+                  <a class="link" href="#" target="_blank" rel="noreferrer">linkedin.com/in/kabore-daoda</a>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="badge">GitHub</span>
+                  <a class="link" href="#" target="_blank" rel="noreferrer">github.com/kabore-daoda</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10 border-t border-base-300">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm">© <span id="year"></span> Kabore Daoda — Administrateur Réseaux</p>
+      <div class="flex items-center gap-3">
+        <a href="#accueil" class="btn btn-sm">Haut de page</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts (vanilla JS) -->
+  <script>
+    // Theme persistence
+    const applyTheme = (theme) => {
+      if (!theme) return;
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('daisyui-theme', theme);
+    }
+    const savedTheme = localStorage.getItem('daisyui-theme');
+    if (savedTheme) applyTheme(savedTheme);
+    document.querySelectorAll('[data-theme-value]').forEach(el => {
+      el.addEventListener('click', () => applyTheme(el.getAttribute('data-theme-value')))
+    });
+
+    // Modal openers
+    document.querySelectorAll('[data-modal]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-modal');
+        const dlg = document.getElementById(id);
+        if (dlg) dlg.showModal();
+      });
+    });
+
+    // Print
+    document.getElementById('btnPrint').addEventListener('click', () => window.print());
+
+    // Generate a simple TXT CV on the fly (single-file friendly)
+    document.getElementById('btnDownloadCV').addEventListener('click', () => {
+      const lines = [
+        'Kabore Daoda — Administrateur Réseaux',
+        'Ouagadougou · Email: kabore.daoda@example.com',
+        '',
+        'COMPÉTENCES',
+        '- Routage & Switching (OSPF, BGP, STP, HSRP)',
+        '- Sécurité (ACL, VPN, pfSense, IDS/IPS)',
+        '- Wi‑Fi (site survey, contrôleur, WPA3)',
+        '- Linux, Ansible, Docker, Git',
+        '',
+        'EXPÉRIENCE',
+        '2024–… Freelance — Conception, déploiement, MCO',
+        '2022–2024 Technicien Réseaux — Support N2/N3, automatisation',
+        '',
+        'CERTIFICATIONS',
+        'CCNA (en cours), MTCNA, Linux (LPIC‑1/équivalent)',
+      ].join('\n');
+      const blob = new Blob([lines], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Kabore-Daoda-CV.txt';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    // Contact form -> build mailto link and basic UX
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    const mailto = document.getElementById('mailtoLink');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const name = data.get('name').toString().trim();
+      const email = data.get('email').toString().trim();
+      const message = data.get('message').toString().trim();
+      if (!name || !email || !message) {
+        status.textContent = 'Veuillez remplir tous les champs.';
+        return;
+      }
+      const subject = encodeURIComponent('Contact Portfolio — ' + name);
+      const body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
+      const href = `mailto:kabore.daoda@example.com?subject=${subject}&body=${body}`;
+      mailto.setAttribute('href', href);
+      status.textContent = 'Cliquez sur « ou envoyez un email » pour finaliser.';
+      mailto.focus();
+    });
+
+    // Copy email
+    document.getElementById('copyEmail').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('kabore.daoda@example.com');
+        alert('Adresse email copiée.');
+      } catch { /* ignore */ }
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

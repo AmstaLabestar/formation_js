@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primitive</title>
+</head>
+<body>
+    <script>
+        let stringArray = [8, 9, 10].toString();
+        console.log(stringArray);
+        let str = "123";
+        let num = parseInt(str);
+        console.log(num); // 123
+        console.log(Number(null)); // "number"
+        let sparseArray = [10, , , 40];
+
+console.log(sparseArray);
+// Affiche : [10, <2 empty items>, 40]
+    function trackTotal(initialValue) {
+  let total = initialValue;
+  return function(increment) {
+    total += increment;
+    return total;
+  };
+}
+
+let track = trackTotal(1);
+console.log(track(2));
+console.log(track(3));
+
+
+const numbers = [1, 1, 1, 1, 1];
+let sum = 0;
+const forEachRes = numbers.forEach(num => {
+  return (sum += num);
+});
+const mapRes = numbers.map(num => {
+  return (sum += num);
+});
+
+console.log(forEachRes); // undefined
+console.log(mapRes); // [5, 5, 5, 5,
+
+console.log([, undefined, 'a', 'b', { 20: 5 }].sort())
+
+let numbers2 = [2, 4, 8, 10];
+
+numbers2.forEach(function(number) {
+    console.log(number % 2);
+});
+
+const originalArray = [{ id: 1 }, { id: 2 }, { id: 3 }];
+const filteredArray = originalArray.filter(item => item.id > 1);
+filteredArray[0].id = 4;
+
+console.log(originalArray); // [{ id: 1 }, { id: 4 }, { id: 3 }]
+
+const words = ['apple', 'banana', 'pear', 'kiwi'];
+const shortWords = words.filter(word => word.length <= 5);
+console.log(shortWords); // ["apple", "pear", "kiwi"]
+    </script>
+
+</body>
+</html>

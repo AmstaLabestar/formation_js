@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio — Administrateur Réseaux</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Tailwind config (optionnel) + DaisyUI
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ["Inter", "ui-sans-serif", "system-ui"],
+            },
+          },
+        },
+      };
+    </script>
+    <!-- DaisyUI (thèmes + composants) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- Icons (Lucide) -->
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+      /* Petites améliorations visuelles */
+      html { scroll-behavior: smooth; }
+      .glass-card { backdrop-filter: blur(8px); background: rgba(255,255,255,0.6); }
+      [data-theme="dark"] .glass-card { background: rgba(17,24,39,0.6); }
+    </style>
+  </head>
+  <body class="font-display bg-base-100 text-base-content">
+    <!-- Navbar -->
+    <header class="navbar bg-base-100/70 backdrop-blur-md sticky top-0 z-50 border-b border-base-200">
+      <div class="navbar-start">
+        <a href="#home" class="btn btn-ghost text-xl">Admin Réseaux</a>
+      </div>
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1">
+          <li><a href="#about">À propos</a></li>
+          <li><a href="#skills">Compétences</a></li>
+          <li><a href="#experience">Expérience</a></li>
+          <li><a href="#projects">Projets</a></li>
+          <li><a href="#certs">Certifications</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="navbar-end gap-2">
+        <label class="input input-bordered flex items-center gap-2 hidden md:flex">
+          <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-search size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input id="site-search" type="text" class="grow" placeholder="Rechercher..." />
+        </label>
+        <button id="theme-toggle" class="btn btn-ghost" aria-label="Basculer le thème">
+          <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-sun-medium size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2"/><path d="M12 19v2"/><path d="M3 12h2"/><path d="M19 12h2"/><path d="m18.364 5.636-1.414 1.414"/><path d="m7.05 16.95-1.414 1.414"/><path d="m5.636 5.636 1.414 1.414"/><path d="m16.95 16.95 1.414 1.414"/><circle cx="12" cy="12" r="4"/></svg>
+        </button>
+        <a href="#contact" class="btn btn-primary">Engagez‑moi</a>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="home" class="min-h-[78vh] grid place-items-center bg-gradient-to-b from-base-200 to-base-100">
+      <div class="container mx-auto px-4 py-16">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+          <div class="space-y-6">
+            <div class="badge badge-primary badge-lg">Administrateur Réseaux</div>
+            <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+              Fiabilité, Sécurité & Performance <span class="text-primary">Réseau</span>
+            </h1>
+            <p class="text-lg opacity-80">
+              J'administre, sécurise et optimise des infrastructures réseau on‑premise et cloud :
+              Cisco, Mikrotik, Fortinet, Linux, AD/DNS/DHCP, Wi‑Fi, virtualisation, observabilité…
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <a href="#projects" class="btn btn-primary">Voir mes projets</a>
+              <a href="#contact" class="btn btn-outline">Me contacter</a>
+              <a download href="#" class="btn btn-ghost">Télécharger CV</a>
+            </div>
+            <div class="flex items-center gap-6 pt-2">
+              <div class="stat place-items-center p-0">
+                <div class="stat-title">Disponibilité</div>
+                <div class="stat-value text-primary text-3xl">Freelance</div>
+              </div>
+              <div class="stat place-items-center p-0">
+                <div class="stat-title">Basé à</div>
+                <div class="stat-value text-3xl">Ouagadougou</div>
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="mockup-window border bg-base-300 shadow-xl">
+              <div class="bg-base-200 p-6">
+                <pre class="text-sm whitespace-pre-wrap"><code>// Exemple de règles Firewall (Fortinet)
+config firewall address
+  edit "intranet-subnet"
+  set subnet 10.0.0.0 255.255.255.0
+next
+config firewall policy
+  edit 1
+  set srcintf "lan"
+  set dstintf "wan"
+  set srcaddr "intranet-subnet"
+  set dstaddr "all"
+  set action accept
+  set schedule "always"
+  set service "HTTP" "HTTPS" "DNS"
+  set nat enable
+end</code></pre>
+              </div>
+            </div>
+            <div class="absolute -bottom-6 -right-6 w-40 h-40 rounded-2xl glass-card border border-base-200 shadow-xl grid place-items-center">
+              <div class="text-center p-4">
+                <div class="text-3xl font-bold">99.9%</div>
+                <div class="text-sm opacity-80">Uptime visé</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- À propos -->
+    <section id="about" class="container mx-auto px-4 py-20">
+      <div class="grid lg:grid-cols-3 gap-8 items-start">
+        <div class="lg:col-span-2 space-y-4">
+          <h2 class="text-3xl md:text-4xl font-bold">À propos</h2>
+          <p>
+            Administrateur réseaux avec <strong>5+ ans</strong> d'expérience dans des environnements
+            multi‑sites. Je construis des réseaux robustes, j'automatise les tâches répétitives
+            et je mets en place des stratégies de sécurité adaptées au contexte.
+          </p>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="card bg-base-200 shadow-sm">
+              <div class="card-body gap-2">
+                <h3 class="card-title text-base">Spécialités</h3>
+                <ul class="list-disc ml-5 text-sm leading-7">
+                  <li>Routage & switching (OSPF, BGP, VLAN, STP, QoS)</li>
+                  <li>Firewalling & VPN (IPSec, SSL, site‑à‑site)</li>
+                  <li>Services réseau (DNS, DHCP, NTP, RADIUS)</li>
+                  <li>Supervision (Zabbix, Grafana, Prometheus)</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card bg-base-200 shadow-sm">
+              <div class="card-body gap-2">
+                <h3 class="card-title text-base">Environnement</h3>
+                <ul class="list-disc ml-5 text-sm leading-7">
+                  <li>Cisco, MikroTik, Fortinet, Ubiquiti</li>
+                  <li>Linux (Debian/Ubuntu), Windows Server</li>
+                  <li>Virtualisation (VMware/Proxmox), Cloud (AWS/Azure)</li>
+                  <li>Infra as Code (Ansible), Scripting (Bash, Python)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <aside class="card bg-base-200 shadow-md">
+          <div class="card-body">
+            <h3 class="card-title">Infos rapides</h3>
+            <div class="divider my-1"></div>
+            <ul class="text-sm space-y-2">
+              <li><b>Langues :</b> Français (pro), Anglais (interm.)</li>
+              <li><b>Disponibilité :</b> Immédiate</li>
+              <li><b>Contrats :</b> Freelance / CDI</li>
+              <li><b>Localisation :</b> Ouagadougou, BF — Remote OK</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Compétences -->
+    <section id="skills" class="bg-base-200 py-20">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8">Compétences clés</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- Skill card -->
+          <div class="card bg-base-100 shadow">
+            <div class="card-body">
+              <div class="flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-cable size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7v10"/><path d="M18 7v10"/><rect width="8" height="6" x="8" y="9" rx="1"/><path d="M10 7V5"/><path d="M14 7V5"/><path d="M10 19v2"/><path d="M14 19v2"/></svg>
+                <h3 class="card-title text-lg">Routage & Switching</h3>
+              </div>
+              <p class="text-sm opacity-80">VLAN, Trunking, STP/RSTP, OSPF, BGP, HSRP/VRRP, QoS.</p>
+              <div class="mt-3"><progress class="progress progress-primary w-full" value="85" max="100"></progress></div>
+            </div>
+          </div>
+          <div class="card bg-base-100 shadow">
+            <div class="card-body">
+              <div class="flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-shield-check size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+                <h3 class="card-title text-lg">Sécurité Réseau</h3>
+              </div>
+              <p class="text-sm opacity-80">ACL, NAT/PAT, IPS/IDS, VPN IPSec/SSL, segmentation, SIEM.</p>
+              <div class="mt-3"><progress class="progress progress-primary w-full" value="80" max="100"></progress></div>
+            </div>
+          </div>
+          <div class="card bg-base-100 shadow">
+            <div class="card-body">
+              <div class="flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-wifi size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h.01"/><path d="M2 8.82a15 15 0 0 1 20 0"/><path d="M5 12.859a10 10 0 0 1 14 0"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/></svg>
+                <h3 class="card-title text-lg">Wi‑Fi & Mobilité</h3>
+              </div>
+              <p class="text-sm opacity-80">Site survey, AP design, 802.1X, roaming, RF optimisation.</p>
+              <div class="mt-3"><progress class="progress progress-primary w-full" value="75" max="100"></progress></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stacks -->
+        <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="badge badge-outline">Cisco</div>
+          <div class="badge badge-outline">MikroTik</div>
+          <div class="badge badge-outline">Fortinet</div>
+          <div class="badge badge-outline">Ubiquiti</div>
+          <div class="badge badge-outline">Linux</div>
+          <div class="badge badge-outline">Windows Server</div>
+          <div class="badge badge-outline">VMware/Proxmox</div>
+          <div class="badge badge-outline">Ansible</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expérience -->
+    <section id="experience" class="container mx-auto px-4 py-20">
+      <h2 class="text-3xl md:text-4xl font-bold mb-8">Expérience</h2>
+      <div class="timeline timeline-vertical">
+        <div class="timeline-start">2025</div>
+        <div class="timeline-middle">
+          <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-briefcase size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12h.01"/><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        </div>
+        <div class="timeline-end timeline-box">
+          <h3 class="font-semibold">Admin Réseaux — Entreprise X</h3>
+          <p class="text-sm opacity-80">MCO de l'infra (1000+ utilisateurs), refonte LAN/WAN, politiques Zero Trust, mise en place Zabbix/Grafana.</p>
+        </div>
+
+        <hr />
+
+        <div class="timeline-start">2023</div>
+        <div class="timeline-middle">
+          <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-router size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="14" rx="2"/><path d="M6.01 18H6"/><path d="M10.01 18H10"/><path d="M15 10v4"/><path d="M9 10v4"/><path d="M9 10a3 3 0 0 1 6 0"/></svg>
+        </div>
+        <div class="timeline-end timeline-box">
+          <h3 class="font-semibold">Ing. Réseau — Société Y</h3>
+          <p class="text-sm opacity-80">Déploiement SD‑WAN, segmentation VLAN, durcissement firewall, automatisations Ansible.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projets -->
+    <section id="projects" class="bg-base-200 py-20">
+      <div class="container mx-auto px-4">
+        <div class="flex items-end justify-between gap-4 mb-8">
+          <h2 class="text-3xl md:text-4xl font-bold">Projets</h2>
+          <div class="join hidden md:inline-flex">
+            <input id="filterInput" class="input input-bordered join-item" placeholder="Filtrer (ex: VPN)" />
+            <button id="clearFilter" class="btn join-item">Effacer</button>
+          </div>
+        </div>
+        <div id="projectGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Project 1 -->
+          <article class="card bg-base-100 shadow project-item" data-tags="vpn fortinet ipsec">
+            <figure class="h-40 bg-gradient-to-br from-primary/20 to-primary/5"></figure>
+            <div class="card-body">
+              <h3 class="card-title">VPN site‑à‑site multi‑agences</h3>
+              <p class="text-sm opacity-80">Architecture IPSec avec redondance, supervision, procédure d'escalade.</p>
+              <div class="card-actions justify-between items-center">
+                <div class="badge badge-outline">Fortinet</div>
+                <a class="btn btn-sm btn-outline" href="#">Détails</a>
+              </div>
+            </div>
+          </article>
+          <!-- Project 2 -->
+          <article class="card bg-base-100 shadow project-item" data-tags="wifi cisco radius 802.1x">
+            <figure class="h-40 bg-gradient-to-br from-secondary/20 to-secondary/5"></figure>
+            <div class="card-body">
+              <h3 class="card-title">Wi‑Fi Entreprise 802.1X</h3>
+              <p class="text-sm opacity-80">Conception RF, RADIUS, VLAN dynamiques, portail invité isolé.</p>
+              <div class="card-actions justify-between items-center">
+                <div class="badge badge-outline">Cisco</div>
+                <a class="btn btn-sm btn-outline" href="#">Détails</a>
+              </div>
+            </div>
+          </article>
+          <!-- Project 3 -->
+          <article class="card bg-base-100 shadow project-item" data-tags="ansible automation linux monitoring zabbix">
+            <figure class="h-40 bg-gradient-to-br from-accent/20 to-accent/5"></figure>
+            <div class="card-body">
+              <h3 class="card-title">Automatisation Ansible + Monitoring</h3>
+              <p class="text-sm opacity-80">Playbooks MCO, déploiements, alerting Zabbix, dashboards Grafana.</p>
+              <div class="card-actions justify-between items-center">
+                <div class="badge badge-outline">Ansible</div>
+                <a class="btn btn-sm btn-outline" href="#">Détails</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certs" class="container mx-auto px-4 py-20">
+      <h2 class="text-3xl md:text-4xl font-bold mb-8">Certifications</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="card bg-base-100 shadow">
+          <div class="card-body">
+            <h3 class="card-title">Cisco CCNA</h3>
+            <p class="text-sm opacity-80">Réseaux, IP Services, Sécurité, Automatisation.</p>
+            <div class="card-actions justify-end"><div class="badge badge-primary">Actif</div></div>
+          </div>
+        </div>
+        <div class="card bg-base-100 shadow">
+          <div class="card-body">
+            <h3 class="card-title">Fortinet NSE 4</h3>
+            <p class="text-sm opacity-80">Administration FortiGate, politiques, VPN, SD‑WAN.</p>
+            <div class="card-actions justify-end"><div class="badge badge-ghost">2024</div></div>
+          </div>
+        </div>
+        <div class="card bg-base-100 shadow">
+          <div class="card-body">
+            <h3 class="card-title">MikroTik MTCNA</h3>
+            <p class="text-sm opacity-80">Routage, Wireless, Firewall, QoS, OSPF.</p>
+            <div class="card-actions justify-end"><div class="badge badge-ghost">2023</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="bg-base-200 py-20">
+      <div class="container mx-auto px-4">
+        <div class="grid lg:grid-cols-2 gap-10 items-start">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Me contacter</h2>
+            <p class="opacity-80 mb-6">Discutons de vos besoins réseau : audit, déploiement, MCO, sécurité.</p>
+            <ul class="space-y-3">
+              <li class="flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-mail size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                <a href="mailto:contact@exemple.com" class="link">contact@exemple.com</a>
+              </li>
+              <li class="flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-phone size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.09 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.81.3 1.6.54 2.36a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.72-1.11a2 2 0 0 1 2.11-.45c.76.24 1.55.42 2.36.54A2 2 0 0 1 22 16.92Z"/></svg>
+                <a href="tel:+22670000000" class="link">+226 70 00 00 00</a>
+              </li>
+              <li class="flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-map-pin size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Ouagadougou, Burkina Faso</span>
+              </li>
+            </ul>
+          </div>
+          <form id="contactForm" class="card bg-base-100 shadow-xl">
+            <div class="card-body">
+              <div class="grid sm:grid-cols-2 gap-4">
+                <label class="form-control w-full">
+                  <div class="label"><span class="label-text">Nom</span></div>
+                  <input name="name" type="text" placeholder="Votre nom" class="input input-bordered w-full" required />
+                </label>
+                <label class="form-control w-full">
+                  <div class="label"><span class="label-text">Email</span></div>
+                  <input name="email" type="email" placeholder="vous@exemple.com" class="input input-bordered w-full" required />
+                </label>
+              </div>
+              <label class="form-control">
+                <div class="label"><span class="label-text">Sujet</span></div>
+                <input name="subject" type="text" placeholder="Objet" class="input input-bordered" />
+              </label>
+              <label class="form-control">
+                <div class="label"><span class="label-text">Message</span></div>
+                <textarea name="message" class="textarea textarea-bordered h-32" placeholder="Décrivez votre besoin…" required></textarea>
+              </label>
+              <div class="form-control">
+                <label class="label cursor-pointer justify-start gap-3">
+                  <input id="consent" type="checkbox" class="checkbox" required />
+                  <span class="label-text">J'accepte d'être contacté(e) par email/téléphone</span>
+                </label>
+              </div>
+              <div class="card-actions justify-end">
+                <button class="btn btn-primary" type="submit">Envoyer</button>
+              </div>
+              <div id="formAlert" class="alert hidden mt-4"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-base-300">
+      <div class="container mx-auto px-4 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="opacity-70">© <span id="year"></span> Votre Nom — Admin Réseaux</p>
+        <div class="flex gap-3">
+          <a class="btn btn-sm btn-ghost" href="#home" aria-label="Haut de page">Haut</a>
+          <a class="btn btn-sm btn-ghost" href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="btn btn-sm btn-ghost" href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Script (thème, filtrage, formulaire) -->
+    <script>
+      // Init année
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Thème DaisyUI
+      const html = document.documentElement;
+      const themeBtn = document.getElementById('theme-toggle');
+      const THEMES = ['light', 'dark', 'business'];
+      let i = 0;
+      themeBtn.addEventListener('click', () => {
+        i = (i + 1) % THEMES.length;
+        html.setAttribute('data-theme', THEMES[i]);
+      });
+
+      // Filtre projets par tags
+      const filterInput = document.getElementById('filterInput');
+      const clearFilter = document.getElementById('clearFilter');
+      const projectGrid = document.getElementById('projectGrid');
+      const items = Array.from(document.querySelectorAll('.project-item'));
+
+      function applyFilter(value) {
+        const v = value.trim().toLowerCase();
+        items.forEach(card => {
+          const tags = card.getAttribute('data-tags') || '';
+          const visible = v === '' || tags.toLowerCase().includes(v);
+          card.style.display = visible ? '' : 'none';
+        });
+      }
+      filterInput && filterInput.addEventListener('input', (e) => applyFilter(e.target.value));
+      clearFilter && clearFilter.addEventListener('click', () => { filterInput.value = ''; applyFilter(''); });
+
+      // Recherche simple (titre + paragraphes)
+      const search = document.getElementById('site-search');
+      search && search.addEventListener('input', (e) => {
+        const q = e.target.value.toLowerCase();
+        const sections = document.querySelectorAll('section, article');
+        sections.forEach(el => {
+          el.style.outline = '';
+          if (q && (el.textContent || '').toLowerCase().includes(q)) {
+            el.style.outline = '1px dashed var(--fallback-p,oklch(var(--p)))';
+          }
+        });
+      });
+
+      // Formulaire (simulation)
+      const form = document.getElementById('contactForm');
+      const alertBox = document.getElementById('formAlert');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(form).entries());
+        // Simule l'envoi + affiche un message
+        alertBox.className = 'alert alert-success';
+        alertBox.innerHTML = `<span>Merci ${data.name || ''} ! Votre message a été envoyé (simulation).</span>`;
+        alertBox.classList.remove('hidden');
+        form.reset();
+      });
+
+      // Remplissage rapide (pour démo) — supprimez si inutile
+      window.demoFill = () => {
+        document.querySelector('input[name="name"]').value = 'Bikienga Hamza';
+        document.querySelector('input[name="email"]').value = 'hamza@example.com';
+        document.querySelector('input[name="subject"]').value = 'Audit réseau';
+        document.querySelector('textarea[name="message"]').value = 'Bonjour, j\'aimerais un audit de notre LAN/WAN.';
+        document.getElementById('consent').checked = true;
+      };
+    </script>
+  </body>
+</html>

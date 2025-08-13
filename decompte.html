@@ -16,7 +16,7 @@
   <script>
     const btn = document.getElementById('countdownBtn');
     const messageDiv = document.getElementById('message');
-    let count = 200; // Valeur de départ
+    let count = 20000; // Valeur de départ
 
     function decompte(n) {
       if (n < 0) {
@@ -28,7 +28,7 @@
 
       setTimeout(() => {
         decompte(n - 1);
-      }, 100);
+      }, 1000);
     }
 
     decompte(count);
